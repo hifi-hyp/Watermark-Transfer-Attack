@@ -130,7 +130,7 @@ def main():
             cp = torch.load(sur_cp_list[idx], map_location='cpu')
         utils.model_from_checkpoint(sur_model_list[idx], cp)
 
-    test_tfattk_hidden(model, sur_model_list, device, target_config, train_options, val_dataset, train_type, model_type, attk_param, data_name, pp, wm_method, target, smooth)
+    test_tfattk_hidden(model, sur_model_list, device, target_config, train_options, val_dataset, train_type, model_type, data_name, wm_method, target, smooth)
 
 
 
