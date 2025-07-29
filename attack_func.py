@@ -43,9 +43,7 @@ def test_tfattk_hidden(model,
                    val_dataset,
                    train_type,
                    model_type,
-                   attk_param,
                    data_name,
-                   pp,
                    wm_method,
                    target,
                    smooth):
@@ -60,7 +58,7 @@ def test_tfattk_hidden(model,
             num += 1
             image = batch['image'].to(device)
             message = torch.load('./message/' + str(hidden_config.message_length) + 'bits_message_' + str(num) + '.pth').to(device)
-            losses, (encoded_images, attk_images, decoded_messages), num = tfattk_validate_on_batch(model, [image, message], model_list, num, train_type, model_type, attk_param, pp, wm_method, target, smooth=smooth)
+            losses, (encoded_images, attk_images, decoded_messages), num = tfattk_validate_on_batch(model, [image, message], model_list, num, train_type, model_type, wm_method, target, smooth=smooth)
             for name, loss in losses.items():
                 validation_losses[name].update(loss)
 
@@ -76,7 +74,7 @@ def test_tfattk_hidden(model,
             num += 1
             image = image.to(device)
             message = torch.load('./message/' + str(hidden_config.message_length) + 'bits_message_' + str(num) + '.pth').to(device)
-            losses, (encoded_images, attk_images, decoded_messages), num = tfattk_validate_on_batch(model, [image, message], model_list, num, train_type, model_type, attk_param, pp, wm_method, target, smooth=smooth)
+            losses, (encoded_images, attk_images, decoded_messages), num = tfattk_validate_on_batch(model, [image, message], model_list, num, train_type, model_type, wm_method, target, smooth=smooth)
             for name, loss in losses.items():
                 validation_losses[name].update(loss)
 
@@ -92,7 +90,7 @@ def test_tfattk_hidden(model,
             num += 1
             image = image.to(device)
             message = torch.load('./message/' + str(hidden_config.message_length) + 'bits_message_' + str(num) + '.pth').to(device)
-            losses, (encoded_images, attk_images, decoded_messages), num = tfattk_validate_on_batch(model, [image, message], model_list, num, train_type, model_type, attk_param, pp, wm_method, target, smooth=smooth)
+            losses, (encoded_images, attk_images, decoded_messages), num = tfattk_validate_on_batch(model, [image, message], model_list, num, train_type, model_type, wm_method, target, smooth=smooth)
             for name, loss in losses.items():
                 validation_losses[name].update(loss)
             if num == 1:
@@ -100,7 +98,7 @@ def test_tfattk_hidden(model,
  
     
 
-def tfattk_validate_on_batch(model: Hidden, batch: list, model_list: list, num: int, train_type: str, model_type: str, attk_param: float, pp: str, wm_method, target, encode_wm=True, white=False, smooth=False):
+def tfattk_validate_on_batch(model: Hidden, batch: list, model_list: list, num: int, train_type: str, model_type: str, wm_method, target, encode_wm=True, white=False, smooth=False):
     images, messages = batch
 
     batch_size = images.shape[0]
