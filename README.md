@@ -1,11 +1,6 @@
 # Watermark Transfer Attack
 
-This repository implements a novel method for conducting transfer attacks on model watermarks. In watermarking research, transfer attacks aim to disrupt or replicate watermarks in models to evaluate robustness. The implementation contains the necessary components and tools to reproduce and tweak transfer attack experiments on various models.
-
-## Features
-1. **Flexible Models**: The repository supports ResNet18, DenseNet, and custom models.
-2. **Modular Architecture**: Encoders, Decoders, and Discriminators are setup as modular blocks.
-3. **Customizable Layers**: Easily manipulate intermediate layers using scripts provided.
+This repository contains the official implementation of ICLR25 paper: A Transfer Attack to Image Watermarks. 
 
 ## Installation
 1. Clone this repository:
@@ -15,11 +10,9 @@ This repository implements a novel method for conducting transfer attacks on mod
    ```
 
 2. Install dependencies:
-   Create a Python virtual environment and install the required `requirements.txt`:
+   Create a Python virtual environment and install the required `requirements.yml`:
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
+   conda env create -f environment.yml
    ```
 
 ## Running Evaluations
