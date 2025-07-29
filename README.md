@@ -47,5 +47,5 @@ You should correctly set the paths of your target watermarking model and surroga
 * `wm_method`: Watermarking method used (default `hidden`, can be changed to others).  
 * `target`: Target model type to attack (e.g., `hidden`).  
 * `model_type`: Model backbone architecture (`cnn` or `resnet`).  
-* `smooth`: Enables label smoothing during evaluati*
+* `smooth`: Enables label smoothing during evaluation.
 ....
